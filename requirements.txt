@@ -19,7 +19,8 @@ Mako==1.0.1
 MarkupSafe==0.23
 ndg-httpsclient==0.4.0
 oletools==0.42
-http://pefile.googlecode.com/files/pefile-1.2.10-139.tar.gz#egg=pefile
+#http://pefile.googlecode.com/files/pefile-1.2.10-139.tar.gz#egg=pefile
+http://pkgs.fedoraproject.org/repo/pkgs/python-pefile/pefile-1.2.10-139.tar.gz/f10a94320bfaca356fff4d28c41e9278/pefile-1.2.10-139.tar.gz#egg=pefile
 pyasn1==0.1.8
 pycparser==2.14
 pymisp==2.4.36

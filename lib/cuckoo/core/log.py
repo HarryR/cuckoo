@@ -4,6 +4,7 @@
 
 import copy
 import logging.handlers
+import os
 import os.path
 import thread
 
@@ -34,10 +35,14 @@ class TaskHandler(logging.Handler):
             return
 
         # Don't bother, this will be improved with #863 anyway.
-        logpath = os.path.join(
-            CUCKOO_ROOT, "storage", "analyses", "%s" % task_id, "cuckoo.log"
+        logdir = os.path.join(
+            CUCKOO_ROOT, "storage", "analyses", "%s" % task_id
         )
-
+        logpath = os.path.join(
+            logdir, "cuckoo.log"
+        )
+        if not os.path.exists(logpath):
+            os.mkdir(logpath)
         with open(logpath, "a+b") as f:
             f.write("%s\n" % self.format(record))
 
