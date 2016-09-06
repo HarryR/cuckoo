@@ -41,10 +41,15 @@ class TaskHandler(logging.Handler):
         logpath = os.path.join(
             logdir, "cuckoo.log"
         )
-        if not os.path.exists(logpath):
-            os.mkdir(logpath)
-        with open(logpath, "a+b") as f:
-            f.write("%s\n" % self.format(record))
+        if not os.path.exists(logdir):
+            os.mkdir(logdir)
+        try:
+            data = "%s\n" % self.format(record)
+            with open(logpath, "a+b") as f:
+                f.write(data)
+        except Exception as ex:
+            print("ERROR: cannot write to logfile: ", logpath, data)
+            print(ex)
 
 class ConsoleHandler(logging.StreamHandler):
     """Logging to console handler."""
