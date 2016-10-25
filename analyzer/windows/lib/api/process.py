@@ -277,11 +277,11 @@ class Process(object):
             argv += ["--maximize"]
 
         try:
-            self.pid = int(subprocess_checkoutput(argv, env))
+            self.pid = int(subprocess_checkoutput(argv, env).split()[0])
         except Exception:
-            log.error("Failed to execute process from path %r with "
-                      "arguments %r (Error: %s)", path, argv,
-                      get_error_string(KERNEL32.GetLastError()))
+            log.exception("Failed to execute process from path %r with "
+                          "arguments %r (Error: %s)", path, argv,
+                          get_error_string(KERNEL32.GetLastError()))
             return False
 
         log.info("Successfully executed process from path %r with "
