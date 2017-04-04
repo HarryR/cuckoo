@@ -494,7 +494,7 @@ class AnalysisManager(threading.Thread):
             # Run and manage the components inside the guest unless this
             # machine has the "noagent" option specified (please refer to the
             # wait_finish() function for more details on this function).
-            if "noagent" not in self.machine.options:
+            if "noagent" not in (getattr(self.machine, 'options', '') or ''):
                 self.guest_manage(options)
             else:
                 self.wait_finish()
