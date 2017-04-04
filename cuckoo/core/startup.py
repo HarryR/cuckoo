@@ -247,7 +247,7 @@ def init_yara(index):
 
         try:
             File.yara_rules[category] = yara.compile(rulepath)
-        except yara.Error as e:
+        except Exception as e:
             raise CuckooStartupError(
                 "There was a syntax error in one or more Yara rules: %s" % e
             )

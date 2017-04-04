@@ -25,7 +25,7 @@ class Sniffer(Auxiliary):
             return False
 
         # Handle special pcap dumping options.
-        if "nictrace" in self.machine.options:
+        if "nictrace" in (getattr(self.machine, 'options', '') or ''):
             return True
 
         tcpdump = self.options["tcpdump"]
